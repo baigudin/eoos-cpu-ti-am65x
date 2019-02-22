@@ -373,7 +373,7 @@ namespace local
                             uint32 m1changeAck       : 1;
                             uint32 m2changeAck       : 1;
                             uint32 m3changeAck       : 1;
-                            uint32                   : 2;
+                            uint32                   : 3;
                             uint32 bypassClktype     : 1;
                             uint32                   : 4;
                             uint32 tvalid            : 1;
@@ -597,18 +597,28 @@ namespace local
                         uint32 value;
                         struct
                         {
-                            uint32          : 12;
+                            uint32          : 14;
                             uint32 ldopwdn  : 1;
-                            uint32          : 13;
+                            uint32          : 15;
                             uint32 pgoodout : 1;
                             uint32 ponout   : 1;
                         } bit;
                     } hsdivPwrStat;
                 
+                private:
+
                     /**
-                     * Unlocks registers access.
+                     * NOTE: The gap is defined to allow to declare an array of variables of this type
+                     * in a MCU or MAIN PLL domains.
+                     */
+                    uint32 space2_[0x3B7];
+
+                public:
+
+                    /**
+                     * Test if registers access is locked.
                      *
-                     * @return a lock status before this function was called.
+                     * @return true if access is denied.
                      */
                     bool isLocked() const
                     {
@@ -636,7 +646,7 @@ namespace local
                      *
                      * @param isLocked - returned status by the unlock function, or true for directly locking the access.
                      */
-                    void lock(bool isLocked = true)
+                    void lock(bool const isLocked = true)
                     {
                         if( isLocked )
                         {
@@ -644,16 +654,6 @@ namespace local
                             kick1.value = 0;
                         }
                     }
-                
-                private:
-                
-                    /**
-                     * NOTE: The gap is defined to allow to declare an array of variables of this type
-                     * in a MCU or MAIN PLL domains.
-                     */
-                    uint32 space2_[0x3B7];
-                
-                public:                
                 
                 } pll[2];
 

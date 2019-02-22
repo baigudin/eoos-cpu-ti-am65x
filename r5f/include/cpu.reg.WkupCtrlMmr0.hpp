@@ -30,38 +30,38 @@ namespace local
                 /**
                  * Kick protection registers values for partition 0.
                  */
-                static const uint32 LOCK0_KICK0 = 0x68EF3490;
-                static const uint32 LOCK0_KICK1 = 0xD172BC5A;
+                static const uint32 PARTITION0_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION0_KICK1 = 0xD172BC5A;
 
                 /**
                  * Kick protection registers values for partition 1.
                  */                
-                static const uint32 LOCK1_KICK0 = 0x68EF3490;
-                static const uint32 LOCK1_KICK1 = 0xD172BC5A;
+                static const uint32 PARTITION1_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION1_KICK1 = 0xD172BC5A;
                 
                 /**
                  * Kick protection registers values for partition 2.
                  */                
-                static const uint32 LOCK2_KICK0 = 0x68EF3490;
-                static const uint32 LOCK2_KICK1 = 0xD172BC5A;
+                static const uint32 PARTITION2_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION2_KICK1 = 0xD172BC5A;
                 
                 /**
                  * Kick protection registers values for partition 3.
                  */                
-                static const uint32 LOCK3_KICK0 = 0x68EF3490;
-                static const uint32 LOCK3_KICK1 = 0xD172BC5A;
+                static const uint32 PARTITION3_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION3_KICK1 = 0xD172BC5A;
                 
                 /**
                  * Kick protection registers values for partition 6.
                  */                
-                static const uint32 LOCK6_KICK0 = 0x68EF3490;
-                static const uint32 LOCK6_KICK1 = 0xD172BC5A;
+                static const uint32 PARTITION6_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION6_KICK1 = 0xD172BC5A;
                 
                 /**
                  * Kick protection registers values for partition 7.
                  */                
-                static const uint32 LOCK7_KICK0 = 0x68EF3490;
-                static const uint32 LOCK7_KICK1 = 0xD172BC5A;                
+                static const uint32 PARTITION7_KICK0 = 0x68EF3490;
+                static const uint32 PARTITION7_KICK1 = 0xD172BC5A;
 
                 /** 
                  * Constructor.
@@ -352,6 +352,11 @@ namespace local
                    ~Lock0Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock0Kick0;
                 
                 /**
@@ -364,6 +369,10 @@ namespace local
                    ~Lock0Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock0Kick1;
                 
                 /**
@@ -556,6 +565,11 @@ namespace local
                    ~Lock1Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock1Kick0;
                 
                 /**
@@ -568,6 +582,10 @@ namespace local
                    ~Lock1Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock1Kick1;
 
             private:        
@@ -769,6 +787,11 @@ namespace local
                    ~Lock2Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock2Kick0;
                 
                 /**
@@ -781,6 +804,10 @@ namespace local
                    ~Lock2Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock2Kick1;
 
             private:        
@@ -925,6 +952,11 @@ namespace local
                    ~Lock3Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock3Kick0;
                 
                 /**
@@ -937,6 +969,10 @@ namespace local
                    ~Lock3Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock3Kick1;
 
             private:        
@@ -1417,6 +1453,11 @@ namespace local
                    ~Lock6Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock6Kick0;
                 
                 /**
@@ -1429,6 +1470,10 @@ namespace local
                    ~Lock6Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock6Kick1;
 
             private:        
@@ -1465,6 +1510,11 @@ namespace local
                    ~Lock7Kick0(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 unlocked : 1;
+                        uint32 key      : 31;
+                    } bit;
                 } lock7Kick0;
                 
                 /**
@@ -1477,7 +1527,176 @@ namespace local
                    ~Lock7Kick1(){}
 
                     uint32 value;
+                    struct
+                    {
+                        uint32 key : 32;
+                    } bit;
                 } lock7Kick1;
+
+            public:
+
+                /**
+                 * Test if registers access is locked.
+                 *
+                 * @param index - an index of a partition that is one of 0, 1, 2, 3, 6, or 7
+                 * @return true if access is denied.
+                 */
+                bool isLocked(int32 const index) const
+                {
+                    bool res;
+                    switch(index)
+                    {
+                        case 0:
+                            res = (this->lock0Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        case 1:
+                            res = (this->lock1Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        case 2:
+                            res = (this->lock2Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        case 3:
+                            res = (this->lock3Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        case 6:
+                            res = (this->lock6Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        case 7:
+                            res = (this->lock7Kick0.bit.unlocked == 0) ? true : false;
+                            break;
+                        default:
+                            res = false;
+                            break;
+                    }
+                    return res;
+                }
+
+                /**
+                 * Unlocks registers access.
+                 *
+                 * @param index - an index of a partition that is one of 0, 1, 2, 3, 6, or 7
+                 * @return a lock status before this function was called.
+                 */
+                bool unlock(int32 const index)
+                {
+                    bool const isLocked = this->isLocked(index);
+                    if( isLocked )
+                    {
+                        switch(index)
+                        {
+                            case 0:
+                                lock0Kick0.value = PARTITION0_KICK0;
+                                lock0Kick1.value = PARTITION0_KICK1;
+                                break;
+                            case 1:
+                                lock1Kick0.value = PARTITION1_KICK0;
+                                lock1Kick1.value = PARTITION1_KICK1;
+                                break;
+                            case 2:
+                                lock2Kick0.value = PARTITION2_KICK0;
+                                lock2Kick1.value = PARTITION2_KICK1;
+                                break;
+                            case 3:
+                                lock3Kick0.value = PARTITION3_KICK0;
+                                lock3Kick1.value = PARTITION3_KICK1;
+                                break;
+                            case 6:
+                                lock6Kick0.value = PARTITION6_KICK0;
+                                lock6Kick1.value = PARTITION6_KICK1;
+                                break;
+                            case 7:
+                                lock7Kick0.value = PARTITION7_KICK0;
+                                lock7Kick1.value = PARTITION7_KICK1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    return isLocked;
+                }
+
+                /**
+                 * Locks registers access.
+                 *
+                 * @param index - an index of a partition that is one of 0, 1, 2, 3, 6, or 7
+                 * @param isLocked - returned status by the unlock function, or true for directly locking the access.
+                 */
+                void lock(int32 const index, bool const isLocked)
+                {
+                    if( isLocked )
+                    {
+                        switch(index)
+                        {
+                            case 0:
+                                lock0Kick0.value = 0;
+                                lock0Kick1.value = 0;
+                                break;
+                            case 1:
+                                lock1Kick0.value = 0;
+                                lock1Kick1.value = 0;
+                                break;
+                            case 2:
+                                lock2Kick0.value = 0;
+                                lock2Kick1.value = 0;
+                                break;
+                            case 3:
+                                lock3Kick0.value = 0;
+                                lock3Kick1.value = 0;
+                                break;
+                            case 6:
+                                lock6Kick0.value = 0;
+                                lock6Kick1.value = 0;
+                                break;
+                            case 7:
+                                lock7Kick0.value = 0;
+                                lock7Kick1.value = 0;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                /**
+                 * Unlocks registers access of all the partitions.
+                 *
+                 * @return a lock status of all the partitions before this function was called.
+                 */
+                int32 unlock()
+                {
+                    int32 isLocked = 0;
+                    for(int32 i=0; i<8; i++)
+                    {
+                        // The partitions are not had
+                        if(i == 4 || i == 5)
+                        {
+                            continue;
+                        }
+                        bool is = unlock(i);
+                        int32 flag = ( is == true ) ? 0x1 : 0x0;
+                        isLocked |= flag << i;
+                    }
+                    return isLocked;
+                }
+
+                /**
+                 * Locks registers access.
+                 *
+                 * @param isLocked - returned status by the unlock function, or true for directly locking the access.
+                 */
+                void lock(int32 const isLocked = 0x000000CF)
+                {
+                    for(int32 i=0; i<8; i++)
+                    {
+                        // The partitions are not had
+                        if(i == 4 || i == 5)
+                        {
+                            continue;
+                        }
+                        bool is = ( (isLocked >> i & 0x1) == 0x1 ) ? true : false;
+                        lock(i, is);
+                    }
+                }
 
             };
         }

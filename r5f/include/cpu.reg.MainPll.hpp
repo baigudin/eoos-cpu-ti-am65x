@@ -1,6 +1,9 @@
 /** 
  * TI AM65x Phase-Locked Loop Controller.
  *
+ * TODO: IT IS NOT READY TO BE USED!!!
+ *       To check all bit-fields, as currently it a cope of McuPll structure.
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
  */
 #ifndef CPU_REG_MAIN_PLL_HPP_
@@ -141,7 +144,7 @@ namespace local
                 } pllMmrCfg1;
 
                 /**
-                 * MCU PLL.
+                 * MAIN PLL.
                  */
                 struct Pll
                 {
@@ -245,8 +248,7 @@ namespace local
                         uint32 value;
                         struct
                         {
-                            uint32 nDiv     : 7;
-                            uint32          : 1;
+                            uint32 nDiv     : 8;
                             uint32 mIntMult : 11;
                             uint32          : 13;
                         } bit;
@@ -264,8 +266,10 @@ namespace local
                         uint32 value;
                         struct
                         {
-                            uint32 mFracMult : 18;
-                            uint32           : 14;
+                            uint32 mFracMult  : 18;
+                            uint32            : 6;
+                            uint32 selFreqDco : 3;
+                            uint32            : 5;
                         } bit;
                     } pllFreqCtrl1;
                 
@@ -283,10 +287,8 @@ namespace local
                         {
                             uint32 m1Div : 4;
                             uint32       : 4;
-                            uint32 m2Div : 5;
-                            uint32       : 3;
-                            uint32 m3Div : 5;
-                            uint32       : 11;
+                            uint32 m2Div : 7;
+                            uint32       : 17;
                         } bit;
                     } pllClkdiv;
                 
@@ -322,29 +324,23 @@ namespace local
                         struct
                         {
                             uint32 clkoutbypassEn : 1;
-                            uint32 clkouthifEn    : 1;
-                            uint32 clkoutx2En     : 1;
+                            uint32                : 1;
+                            uint32                : 1;
                             uint32 clkoutEn       : 1;
                             uint32 clkdcoldoEn    : 1;
-                            uint32                : 2;
+                            uint32 clkoutldoEn    : 1;
+                            uint32                : 1;
                             uint32 idle           : 1;
-                            uint32 clkrampRate    : 3;
-                            uint32                : 1;
-                            uint32 clkrampLevel   : 2;
-                            uint32                : 1;
+                            uint32                : 7;
                             uint32 ulowclkEn      : 1;
-                            uint32 driftguardEn   : 1;
-                            uint32 regm4xEn       : 1;
-                            uint32 clkinphifSel   : 1;
-                            uint32 relockRampEn   : 1;
+                            uint32                : 4;
                             uint32 cycleslipEn    : 1;
-                            uint32 lowcurrstby    : 1;
-                            uint32 relaxedLock    : 1;
-                            uint32 lpmode         : 1;
-                            uint32 bwControl      : 2;
                             uint32                : 1;
-                            uint32 dcCorrectorEn  : 1;
-                            uint32                : 2;
+                            uint32 relaxedLock    : 1;
+                            uint32                : 1;
+                            uint32 bwControl      : 2;
+                            uint32 bwDecrz        : 1;
+                            uint32                : 3;
                             uint32 downspread     : 1;
                             uint32 sscEn          : 1;
                         } bit;
@@ -363,17 +359,16 @@ namespace local
                         struct
                         {
                             uint32 clkoutbypassEnAck : 1;
-                            uint32 clkouthifEnAck    : 1;
-                            uint32 clkoutx2EnAck     : 1;
+                            uint32                   : 2;
                             uint32 clkoutEnAck       : 1;
                             uint32 clkdcoldoEnAck    : 1;
-                            uint32                   : 2;
+                            uint32 clkoutldoEnAck    : 1;
+                            uint32                   : 1;
                             uint32 bypassAck         : 1;
                             uint32                   : 1;
                             uint32 m1changeAck       : 1;
                             uint32 m2changeAck       : 1;
-                            uint32 m3changeAck       : 1;
-                            uint32                   : 2;
+                            uint32                   : 4;
                             uint32 bypassClktype     : 1;
                             uint32                   : 4;
                             uint32 tvalid            : 1;
@@ -597,18 +592,28 @@ namespace local
                         uint32 value;
                         struct
                         {
-                            uint32          : 12;
+                            uint32          : 14;
                             uint32 ldopwdn  : 1;
-                            uint32          : 13;
+                            uint32          : 15;
                             uint32 pgoodout : 1;
                             uint32 ponout   : 1;
                         } bit;
                     } hsdivPwrStat;
+
+                private:
+
+                    /**
+                     * NOTE: The gap is defined to allow to declare an array of variables of this type
+                     * in a MCU or MAIN PLL domains.
+                     */
+                    uint32 space2_[0x3B7];
+
+                public:
                 
                     /**
-                     * Unlocks registers access.
+                     * Test if registers access is locked.
                      *
-                     * @return a lock status before this function was called.
+                     * @return true if access is denied.
                      */
                     bool isLocked() const
                     {
@@ -636,7 +641,7 @@ namespace local
                      *
                      * @param isLocked - returned status by the unlock function, or true for directly locking the access.
                      */
-                    void lock(bool isLocked = true)
+                    void lock(bool const isLocked = true)
                     {
                         if( isLocked )
                         {
@@ -644,16 +649,6 @@ namespace local
                             kick1.value = 0;
                         }
                     }
-                
-                private:
-                
-                    /**
-                     * NOTE: The gap is defined to allow to declare an array of variables of this type
-                     * in a MCU or MAIN PLL domains.
-                     */
-                    uint32 space2_[0x3B7];
-                
-                public:                
                 
                 } pll[8];
 

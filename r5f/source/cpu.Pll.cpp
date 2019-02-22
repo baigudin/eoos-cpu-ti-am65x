@@ -88,6 +88,8 @@ namespace local
             bool res = Self::isConstructed();
             while(res == true)
             {
+                int32 const is = regWkupCtrlMmr0_->unlock();
+
                 // Enables automatic switching of MCU PLL0 and PLL1 clock source
                 // to 12 MHz of CLK_12M_RC if HFOSC0 clock loss is detected,
                 // as better to stay working then stop an execution of an program.
@@ -97,6 +99,7 @@ namespace local
                 regWkupCtrlMmr0_->mcuPllClksel.bit.clklossSwtchEn = 1;
 
                 // The construction completed successfully
+                regWkupCtrlMmr0_->lock(is);
                 break;
             }
             return res;
