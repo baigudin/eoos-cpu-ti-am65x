@@ -1,9 +1,6 @@
 /** 
  * TI AM65x Phase-Locked Loop Controller.
  *
- * TODO: IT IS NOT READY TO BE USED!!!
- *       To check all bit-fields, as currently it a cope of McuPll structure.
- *
  * @author    Sergey Baigudin, sergey@baigudin.software
  */
 #ifndef CPU_REG_MAIN_PLL_HPP_
