@@ -17,7 +17,7 @@ namespace local
         namespace reg
         {
             struct McuPll;
-            struct McuPllDomain;
+            struct WkupCtrlMmr0;
         }
 
         class Pll : public cpu::Object
@@ -66,6 +66,13 @@ namespace local
             bool construct();
 
             /**
+             * Configures PLLs.
+             *
+             * @return true if configuration has been constructed successfully.
+             */
+            bool configure();
+
+            /**
              * Copy constructor.
              *
              * @param obj reference to source object.
@@ -91,9 +98,9 @@ namespace local
             reg::McuPll* regMcuPll_;
 
             /**
-             * PLL0 and PLL1 registers.
+             * WKUP Domain Control Module registers
              */
-            reg::McuPllDomain* regMcuPllDomain_[2];
+            reg::WkupCtrlMmr0* regWkupCtrlMmr0_;
 
         };
     }

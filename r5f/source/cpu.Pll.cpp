@@ -5,7 +5,7 @@
  */
 #include "cpu.Pll.hpp"
 #include "cpu.reg.McuPll.hpp"
-#include "cpu.reg.McuPllDomain.hpp"
+#include "cpu.reg.WkupCtrlMmr0.hpp"
 
 namespace local
 {
@@ -17,8 +17,9 @@ namespace local
          * @param config a operating system configuration.
          */
         Pll::Pll(const Configuration& config) : Parent(),
-            config_    (config),
-            regMcuPll_ (NULL){
+            config_          (config),
+            regMcuPll_       (NULL),
+            regWkupCtrlMmr0_ (NULL){
             bool const isConstructed = construct();
             setConstructed( isConstructed );
         }
@@ -68,18 +69,37 @@ namespace local
                 }
                 // Create PLL registers map
                 regMcuPll_ = new (reg::McuPll::ADDRESS) reg::McuPll();
-                regMcuPllDomain_[0] = new (reg::McuPllDomain::ADDRESS_PLL0) reg::McuPllDomain();
-                regMcuPllDomain_[1] = new (reg::McuPllDomain::ADDRESS_PLL1) reg::McuPllDomain();
+                // Create WKUP Domain Control Module registers
+                regWkupCtrlMmr0_ = new (reg::WkupCtrlMmr0::ADDRESS) reg::WkupCtrlMmr0();
+                // Configures PLLs
+                res = configure();
+                break;
+            }
+            return res;
+        }
 
-                // TODO
-                // Base initialization of ARM Core is probably made by the MCU ROM Code.
-                // So, the checking that the PLL initialization is correctly has to be done here,
-                // and also peripherals like Eth and etc. have to be written.
+        /**
+         * Configures PLLs.
+         *
+         * @return true if configuration has been constructed successfully.
+         */
+        bool Pll::configure()
+        {
+            bool res = Self::isConstructed();
+            while(res == true)
+            {
+                // Enables automatic switching of MCU PLL0 and PLL1 clock source
+                // to 12 MHz of CLK_12M_RC if HFOSC0 clock loss is detected,
+                // as better to stay working then stop an execution of an program.
+                //
+                // TODO: Maybe it is better to notify an operating system or/and user
+                //       that HFOSC0 clock loss is detected. And further recalculate all the frequencies of peripherals.
+                regWkupCtrlMmr0_->mcuPllClksel.bit.clklossSwtchEn = 1;
 
                 // The construction completed successfully
                 break;
             }
-            return res;  
+            return res;
         }
     }
 }

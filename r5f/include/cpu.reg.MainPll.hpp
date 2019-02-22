@@ -1,10 +1,10 @@
 /** 
- * TI AM65x R5F Phase-Locked Loop Controller.
+ * TI AM65x Phase-Locked Loop Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
  */
-#ifndef CPU_REG_MCU_PLL_HPP_
-#define CPU_REG_MCU_PLL_HPP_
+#ifndef CPU_REG_MAIN_PLL_HPP_
+#define CPU_REG_MAIN_PLL_HPP_
 
 #include "Types.hpp"
 
@@ -14,7 +14,7 @@ namespace local
     {
         namespace reg
         {
-            struct McuPll
+            struct MainPll
             {
 
             public:
@@ -22,12 +22,12 @@ namespace local
                 /**
                  * Memory address of this registers.
                  */            
-                static const intptr ADDRESS = 0x40D00000;
+                static const intptr ADDRESS = 0x00680000h;
 
                 /** 
                  * Constructor.
                  */  
-                McuPll() :
+                MainPll() :
                     pid        (),
                     pllMmrCfg0 (),
                     pllMmrCfg1 (){
@@ -36,7 +36,7 @@ namespace local
                 /** 
                  * Destructor.
                  */  
-               ~McuPll(){}
+               ~MainPll(){}
 
                 /**
                  * Operator new.
@@ -655,10 +655,10 @@ namespace local
                 
                 public:                
                 
-                } pll[2];
+                } pll[8];
 
             };
         }
     }
 } 
-#endif // CPU_REG_MCU_PLL_HPP_
+#endif // CPU_REG_MAIN_PLL_HPP_

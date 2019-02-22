@@ -48,7 +48,7 @@ MEMORY
 SECTIONS
 {
   	.hwi : {
-        *( .text.hwi )
+        *( .hwi )
     } > MCU_MSRAM0_CODE
 
     .text : {
