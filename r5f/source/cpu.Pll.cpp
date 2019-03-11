@@ -4,7 +4,6 @@
  * @author    Sergey Baigudin, sergey@baigudin.software
  */
 #include "cpu.Pll.hpp"
-#include "cpu.reg.McuPll.hpp"
 #include "cpu.reg.WkupCtrlMmr0.hpp"
 
 namespace local
@@ -17,9 +16,7 @@ namespace local
          * @param config a operating system configuration.
          */
         Pll::Pll(const Configuration& config) : Parent(),
-            config_          (config),
-            regMcuPll_       (NULL),
-            regWkupCtrlMmr0_ (NULL){
+            config_          (config){
             bool const isConstructed = construct();
             setConstructed( isConstructed );
         }
@@ -67,10 +64,6 @@ namespace local
                     res = false;
                     continue;
                 }
-                // Create PLL registers map
-                regMcuPll_ = new (reg::McuPll::ADDRESS) reg::McuPll();
-                // Create WKUP Domain Control Module registers
-                regWkupCtrlMmr0_ = new (reg::WkupCtrlMmr0::ADDRESS) reg::WkupCtrlMmr0();
                 // Configures PLLs
                 res = configure();
                 break;
@@ -88,18 +81,20 @@ namespace local
             bool res = Self::isConstructed();
             while(res == true)
             {
-                int32 const is = regWkupCtrlMmr0_->unlock();
-
                 // Enables automatic switching of MCU PLL0 and PLL1 clock source
                 // to 12 MHz of CLK_12M_RC if HFOSC0 clock loss is detected,
                 // as better to stay working then stop an execution of an program.
                 //
                 // TODO: Maybe it is better to notify an operating system or/and user
                 //       that HFOSC0 clock loss is detected. And further recalculate all the frequencies of peripherals.
-                regWkupCtrlMmr0_->mcuPllClksel.bit.clklossSwtchEn = 1;
+                reg::WkupCtrlMmr0* regWkupCtrlMmr0 = new (reg::WkupCtrlMmr0::ADDRESS) reg::WkupCtrlMmr0();
+                int32 const is = regWkupCtrlMmr0->unlock();
+                regWkupCtrlMmr0->mcuPllClksel.bit.clklossSwtchEn = 1;
+                regWkupCtrlMmr0->lock(is);
+
+
 
                 // The construction completed successfully
-                regWkupCtrlMmr0_->lock(is);
                 break;
             }
             return res;

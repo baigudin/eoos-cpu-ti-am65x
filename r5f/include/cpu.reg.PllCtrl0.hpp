@@ -1,13 +1,13 @@
 /** 
- * TI AM65x WKUP Domain PLL Control registers.
+ * TI AM65x WKUP or MAIN Domain PLL Control registers.
  *
  * TODO: The set of the registers is not fully filled with bit-fields. 
  *       It will be refreshed by the time it will have been needed.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
  */
-#ifndef CPU_REG_WKUP_PLL_CTRL0_HPP_
-#define CPU_REG_WKUP_PLL_CTRL0_HPP_
+#ifndef CPU_REG_PLL_CTRL0_HPP_
+#define CPU_REG_PLL_CTRL0_HPP_
 
 #include "Types.hpp"
 
@@ -17,20 +17,26 @@ namespace local
     {
         namespace reg
         {
-            struct WkupPllCtrl0
+            struct PllCtrl0
             {
 
             public:
 
                 /**
-                 * Memory address of this registers.
+                 * Memory address of this registers for MAIN Domain.
                  */
-                static const intptr ADDRESS0 = 0x42010000;
+                static const intptr ADDRESS_MAIN = 0x00410000;
+				
+                /**
+                 * Memory address of this registers for WKUP Domain.
+                 */
+                static const intptr ADDRESS_WKUP = 0x42010000;
+				
 
                 /** 
                  * Constructor.
                  */  
-                WkupPllCtrl0() :
+                PllCtrl0()
                     pid          (),
                     shiftdiv     (),
                     cs0          (),
@@ -57,7 +63,7 @@ namespace local
                 /** 
                  * Destructor.
                  */  
-               ~WkupPllCtrl0(){}
+               ~PllCtrl0(){}
 
                 /**
                  * Operator new.
@@ -369,4 +375,4 @@ namespace local
         }
     }
 } 
-#endif // CPU_REG_WKUP_PLL_CTRL0_HPP_
+#endif // CPU_REG_PLL_CTRL0_HPP_

@@ -9,17 +9,13 @@
 #include "cpu.Object.hpp"
 #include "api.CpuPll.hpp"
 #include "Configuration.hpp"
+#include "cpu.PllTypeA.hpp"
+#include "cpu.PllTypeB.hpp"
 
 namespace local
 {
     namespace cpu
     {
-        namespace reg
-        {
-            struct McuPll;
-            struct WkupCtrlMmr0;
-        }
-
         class Pll : public cpu::Object
         {
             typedef cpu::Pll    Self;
@@ -91,16 +87,6 @@ namespace local
              * Configuration of the operating system.
              */
             const Configuration& config_;
-
-            /**
-             * PLL registers.
-             */
-            reg::McuPll* regMcuPll_;
-
-            /**
-             * WKUP Domain Control Module registers
-             */
-            reg::WkupCtrlMmr0* regWkupCtrlMmr0_;
 
         };
     }
