@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Interrupt Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #include "cpu.Interrupt.hpp"
 #include "cpu.reg.McuVim.hpp"
@@ -22,24 +24,24 @@ namespace local
             bool const isConstructed = construct(coreId);
             setConstructed( isConstructed );
         }
-        
-        /** 
+
+        /**
          * Destructor.
          */
         Interrupt::~Interrupt()
         {
         }
-        
+
         /**
          * Tests if this object has been constructed.
          *
          * @return true if object has been constructed successfully.
-         */    
+         */
         bool Interrupt::isConstructed() const
         {
             return Parent::isConstructed();
         }
-        
+
         /**
          * Creates a new HW interrupt resource.
          *
@@ -89,7 +91,7 @@ namespace local
                 // The construction completed successfully
                 break;
             }
-            return res;  
+            return res;
         }
     }
 }

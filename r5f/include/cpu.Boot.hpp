@@ -1,9 +1,11 @@
-/** 
+/**
  * Boot routine.
  *
  * The module performs the tasks to initialize C/C++ run-time environment.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_BOOT_HPP_
 #define CPU_BOOT_HPP_
@@ -16,7 +18,7 @@ namespace local
     {
         class Boot
         {
-    
+
         public:
 
             /**
@@ -24,7 +26,7 @@ namespace local
              *
              * @return true if no errors have been occurred.
              */
-            static bool initialize();          
+            static bool initialize();
 
         };
     }

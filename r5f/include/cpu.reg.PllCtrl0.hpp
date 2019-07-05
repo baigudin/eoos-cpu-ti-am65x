@@ -1,10 +1,12 @@
-/** 
+/**
  * TI AM65x WKUP or MAIN Domain PLL Control registers.
  *
- * TODO: The set of the registers is not fully filled with bit-fields. 
+ * TODO: The set of the registers is not fully filled with bit-fields.
  *       It will be refreshed by the time it will have been needed.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_REG_PLL_CTRL0_HPP_
 #define CPU_REG_PLL_CTRL0_HPP_
@@ -26,16 +28,16 @@ namespace local
                  * Memory address of this registers for MAIN Domain.
                  */
                 static const intptr ADDRESS_MAIN = 0x00410000;
-				
+
                 /**
                  * Memory address of this registers for WKUP Domain.
                  */
                 static const intptr ADDRESS_WKUP = 0x42010000;
-				
 
-                /** 
+
+                /**
                  * Constructor.
-                 */  
+                 */
                 PllCtrl0()
                     pid          (),
                     shiftdiv     (),
@@ -60,9 +62,9 @@ namespace local
                     systat       (){
                 }
 
-                /** 
+                /**
                  * Destructor.
-                 */  
+                 */
                ~PllCtrl0(){}
 
                 /**
@@ -75,7 +77,7 @@ namespace local
                 void* operator new(uint32, intptr ptr)
                 {
                     return reinterpret_cast<void*>(ptr);
-                }     
+                }
 
                 /**
                  * 0h WKUP_PLLCTRL0_PID register 4201 0000h Section 5.4.4.12.1.1.
@@ -142,7 +144,7 @@ namespace local
 
                     uint32 value;
                 } dftfcntrcntl;
- 
+
                 /**
                  * E0h Fusefarm error register 4201 00E0h Section 5.4.4.12.1.6.
                  */
@@ -154,7 +156,7 @@ namespace local
 
                     uint32 value;
                 } fuserr;
- 
+
                 /**
                  * E4h Reset type status register 4201 00E4h Section 5.4.4.12.1.7.
                  */
@@ -166,7 +168,7 @@ namespace local
 
                     uint32 value;
                 } rstype;
- 
+
                 /**
                  * E8h Reset control register 4201 00E8h Section 5.4.4.12.1.8.
                  */
@@ -178,7 +180,7 @@ namespace local
 
                     uint32 value;
                 } rsctrl;
- 
+
                 /**
                  * ECh Reset control register 420100ECh Section 5.4.4.12.1.9.
                  */
@@ -190,7 +192,7 @@ namespace local
 
                     uint32 value;
                 } rscfg;
- 
+
                 /**
                  * F0h Reset isolation control register 4201 00F0h Section 5.4.4.12.1.10.
                  */
@@ -202,7 +204,7 @@ namespace local
 
                     uint32 value;
                 } rsiso;
- 
+
             private:
 
                 uint32 space_[0x3];
@@ -220,13 +222,13 @@ namespace local
 
                     uint32 value;
                 } pllctl;
- 
+
             private:
 
                 uint32 space_[0x3];
 
             public:
-            
+
                 /**
                  * 110h PLL multiplier control register 4201 0110h Section 5.4.4.12.1.12.
                  */
@@ -238,7 +240,7 @@ namespace local
 
                     uint32 value;
                 } pllm;
- 
+
             private:
 
                 uint32 space_[0x1];
@@ -256,7 +258,7 @@ namespace local
 
                     uint32 value;
                 } plldiv1;
- 
+
                 /**
                  * 11Ch PLL controller divider2 control register 4201 011Ch Section 5.4.4.12.1.14.
                  */
@@ -286,7 +288,7 @@ namespace local
 
                     uint32 value;
                 } bpdiv;
- 
+
                 /**
                  * 130h Wakeup register 4201 0130h Section 5.4.4.12.1.16.
                  */
@@ -298,7 +300,7 @@ namespace local
 
                     uint32 value;
                 } wakeup;
- 
+
             private:
 
                 uint32 space_[0x1];
@@ -316,7 +318,7 @@ namespace local
 
                     uint32 value;
                 } pllcmd;
- 
+
                 /**
                  * 13Ch PLL Controller status register 4201 013Ch Section 5.4.4.12.1.18.
                  */
@@ -328,7 +330,7 @@ namespace local
 
                     uint32 value;
                 } pllstat;
- 
+
                 /**
                  * 140h PLL Controller clock align control register 4201 0140h Section 5.4.4.12.1.19.
                  */
@@ -340,7 +342,7 @@ namespace local
 
                     uint32 value;
                 } alnctl;
- 
+
                 /**
                  * 144h PLLDIV ratio change register 4201 0144h Section 5.4.4.12.1.20.
                  */
@@ -352,7 +354,7 @@ namespace local
 
                     uint32 value;
                 } dchange;
- 
+
             private:
 
                 uint32 space_[0x2];
@@ -374,5 +376,5 @@ namespace local
             };
         }
     }
-} 
+}
 #endif // CPU_REG_PLL_CTRL0_HPP_

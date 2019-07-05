@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Interrupt Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_INTERRUPT_HPP_
 #define CPU_INTERRUPT_HPP_
@@ -54,7 +56,7 @@ namespace local
             api::CpuInterrupt* create(api::Task& handler, int32 source);
 
         private:
-        
+
             /**
              * Constructs this object.
              *
@@ -76,7 +78,7 @@ namespace local
              * @return reference to this object.
              */
             Interrupt& operator =(const Interrupt& obj);
-    
+
             /**
              * Configuration of the operating system.
              */

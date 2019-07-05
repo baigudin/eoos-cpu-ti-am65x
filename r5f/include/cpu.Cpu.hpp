@@ -1,7 +1,9 @@
-/** 
+/**
  * The operating system target CPU class.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_CPU_HPP_
 #define CPU_CPU_HPP_
@@ -22,36 +24,36 @@ namespace local
         class Cpu : public cpu::Object, public api::Cpu
         {
             typedef cpu::Cpu    Self;
-            typedef cpu::Object Parent;    
-        
+            typedef cpu::Object Parent;
+
         public:
-        
-            /** 
+
+            /**
              * Constructor.
              *
              * NOTE: A passed configuration will be copied to an internal data of the class.
              *
              * @param config a operating system configuration.
-             */    
+             */
             Cpu(const Configuration& config);
-            
-            /** 
+
+            /**
              * Destructor.
              */
             virtual ~Cpu();
-            
+
             /**
              * Tests if this object has been constructed.
              *
              * @return true if object has been constructed successfully.
-             */    
+             */
             virtual bool isConstructed() const;
-            
+
             /**
-             * Returns a name of a target Central Processing Unit. 
+             * Returns a name of a target Central Processing Unit.
              *
              * @return a CPU name, or NULL if an error has been occurred.
-             */      
+             */
             virtual const char* getName() const;
 
             /**
@@ -84,23 +86,23 @@ namespace local
              * @return a new timer resource, or NULL if an error has been occurred.
              */
             virtual api::CpuTimer* createTimer(int32 index);
-			
+
             /**
              * Returns the processor stack operation type.
              *
-             * @return the stack operation.     
-             */    
+             * @return the stack operation.
+             */
     		static api::Stack<int64>::Operation getStackType();
-            
+
         private:
-        
+
             /**
              * Constructs this object.
              *
-             * @return true if object has been constructed successfully.     
-             */    
+             * @return true if object has been constructed successfully.
+             */
             bool construct();
-            
+
             /**
              * Reads an ID of CPU core from HW register.
              *
@@ -134,12 +136,12 @@ namespace local
              * @param obj a reference to source object.
              */
             Cpu(const Cpu& obj);
-        
+
             /**
              * Assignment operator.
              *
              * @param obj a reference to source object.
-             * @return reference to this object.     
+             * @return reference to this object.
              */
             Cpu& operator =(const Cpu& obj);
 
@@ -147,12 +149,12 @@ namespace local
              * An ID of this CPU executing core.
              */
             int32 coreId_;
-    
-            /**    
+
+            /**
              * Configuration of the operating system.
              */
             Configuration config_;
-            
+
             /**
              * Target CPU PLL controller.
              */

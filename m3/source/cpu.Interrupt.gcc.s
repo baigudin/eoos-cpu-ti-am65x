@@ -2,16 +2,18 @@
  * Interrupt low level module.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
-        .thumb 
+        .thumb
         .extern  _c_int00
-        
-/****************************************************************************/        
+
+/****************************************************************************/
 
 /**
  * Hardware interrupt exception vectors.
  */
-        .section    .hwi  
+        .section    .hwi
         .word       __usr_stack_top__
         .word       m_interrupt_handle_reset
         .word       m_interrupt_handle_nmi
@@ -22,7 +24,7 @@
         .word       0xDEADDEAD
         .word       0xDEADDEAD
         .word       0xDEADDEAD
-        .word       0xDEADDEAD   
+        .word       0xDEADDEAD
         .word       m_interrupt_handle_sv_call
         .word       m_interrupt_handle_debug_monitor
         .word       0xDEADDEAD
@@ -46,13 +48,13 @@ m_interrupt_handle_nmi:
 
 /**
  * Hard Fault exception handler.
- */        
+ */
 m_interrupt_handle_hard_fault:
         b       m_interrupt_handle_hard_fault
 
 /**
  * Memory Management exception handler.
- */        
+ */
 m_interrupt_handle_memory_management:
         b       m_interrupt_handle_memory_management
 
@@ -70,7 +72,7 @@ m_interrupt_handle_usage_fault:
 
 /**
  * SVCall exception handler.
- */        
+ */
 m_interrupt_handle_sv_call:
         b       m_interrupt_handle_sv_call
 
@@ -85,7 +87,7 @@ m_interrupt_handle_debug_monitor:
  */
 m_interrupt_handle_pend_sv:
         b       m_interrupt_handle_pend_sv
-        
+
 /**
  * SysTick exception handler.
  */

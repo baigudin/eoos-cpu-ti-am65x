@@ -2,11 +2,13 @@
  * Interrupt low level module.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
-        .arm 
+        .arm
         .extern  _c_int00
-        
-/****************************************************************************/        
+
+/****************************************************************************/
 
 /**
  * Hardware interrupt exception vectors.
@@ -65,7 +67,7 @@ m_interrupt_handle_abt_prefetch:
  */
 m_interrupt_handle_abt_data:
         b       m_interrupt_handle_abt_data
-    
+
 /**
  * IRQ exception handler.
  */

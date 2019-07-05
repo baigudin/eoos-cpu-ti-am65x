@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Timer Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_TIMER_HPP_
 #define CPU_TIMER_HPP_
@@ -20,7 +22,7 @@ namespace local
             typedef cpu::Object Parent;
 
         public:
-        
+
             /**
              * Constructor.
              *
@@ -52,7 +54,7 @@ namespace local
             api::CpuTimer* create(int32 index);
 
         private:
-        
+
             /**
              * Constructs this object.
              *
@@ -74,7 +76,7 @@ namespace local
              * @return reference to this object.
              */
             Timer& operator =(const Timer& obj);
-    
+
             /**
              * Configuration of the operating system.
              */

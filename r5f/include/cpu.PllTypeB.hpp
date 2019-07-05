@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x Phase-Locked Loop Type B.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_PLL_TYPE_B_HPP_
 #define CPU_PLL_TYPE_B_HPP_
@@ -18,7 +20,7 @@ namespace local
             typedef cpu::PllTypeBase Parent;
 
         public:
-        
+
             /**
              * Constructor.
              */
@@ -30,7 +32,7 @@ namespace local
             virtual ~PllTypeB();
 
         private:
-        
+
             /**
              * Constructs this object.
              *
@@ -52,7 +54,7 @@ namespace local
              * @return reference to this object.
              */
             PllTypeB& operator =(const PllTypeB& obj);
-    
+
         };
     }
 }

@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Timer Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #include "cpu.Timer.hpp"
 
@@ -19,24 +21,24 @@ namespace local
             bool const isConstructed = construct();
             setConstructed( isConstructed );
         }
-        
-        /** 
+
+        /**
          * Destructor.
          */
         Timer::~Timer()
         {
         }
-        
+
         /**
          * Tests if this object has been constructed.
          *
          * @return true if object has been constructed successfully.
-         */    
+         */
         bool Timer::isConstructed() const
         {
             return Parent::isConstructed();
         }
-        
+
         /**
          * Creates a new HW timer resource.
          *
@@ -51,8 +53,8 @@ namespace local
         /**
          * Constructs this object.
          *
-         * @return true if object has been constructed successfully.     
-         */    
+         * @return true if object has been constructed successfully.
+         */
         bool Timer::construct()
         {
             bool res = Self::isConstructed();
@@ -62,11 +64,11 @@ namespace local
                 {
                     res = false;
                     continue;
-                }            
+                }
                 // The construction completed successfully
                 break;
             }
-            return res;  
+            return res;
         }
     }
 }

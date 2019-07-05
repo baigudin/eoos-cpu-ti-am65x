@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Phase-Locked Loop Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #include "cpu.Pll.hpp"
 #include "cpu.reg.WkupCtrlMmr0.hpp"
@@ -20,24 +22,24 @@ namespace local
             bool const isConstructed = construct();
             setConstructed( isConstructed );
         }
-        
-        /** 
+
+        /**
          * Destructor.
          */
         Pll::~Pll()
         {
         }
-        
+
         /**
          * Tests if this object has been constructed.
          *
          * @return true if object has been constructed successfully.
-         */    
+         */
         bool Pll::isConstructed() const
         {
             return Parent::isConstructed();
         }
-        
+
         /**
          * Creates a new HW PLL resource.
          *
@@ -51,8 +53,8 @@ namespace local
         /**
          * Constructs this object.
          *
-         * @return true if object has been constructed successfully.     
-         */    
+         * @return true if object has been constructed successfully.
+         */
         bool Pll::construct()
         {
             bool res = Self::isConstructed();

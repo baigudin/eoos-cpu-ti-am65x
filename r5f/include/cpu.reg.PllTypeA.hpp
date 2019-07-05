@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x Phase-Locked Loop Type A.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_REG_PLL_TYPE_A_HPP_
 #define CPU_REG_PLL_TYPE_A_HPP_
@@ -386,7 +388,7 @@ namespace local
                     HsdivCtrl(){}
                     HsdivCtrl(uint32 v){value = v;}
                    ~HsdivCtrl(){}
-                
+
                     uint32 value;
                     struct
                     {
@@ -400,7 +402,7 @@ namespace local
                         uint32 tenabldiv : 1;
                     } bit;
                 } hsdivCtrl;
-                
+
                 /**
                  * 128h High Speed Divider Status Register.
                  */
@@ -529,5 +531,5 @@ namespace local
             };
         }
     }
-} 
+}
 #endif // CPU_REG_PLL_TYPE_A_HPP_

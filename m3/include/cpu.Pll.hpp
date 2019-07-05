@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F MCU Phase-Locked Loop Controller.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_PLL_HPP_
 #define CPU_PLL_HPP_
@@ -20,7 +22,7 @@ namespace local
             typedef cpu::Object Parent;
 
         public:
-        
+
             /**
              * Constructor.
              *
@@ -51,7 +53,7 @@ namespace local
             api::CpuPll* create();
 
         private:
-        
+
             /**
              * Constructs this object.
              *
@@ -73,7 +75,7 @@ namespace local
              * @return reference to this object.
              */
             Pll& operator =(const Pll& obj);
-    
+
             /**
              * Configuration of the operating system.
              */

@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x Phase-Locked Loop base class for all the PLL types.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_PLL_TYPE_BASE_HPP_
 #define CPU_PLL_TYPE_BASE_HPP_
@@ -18,7 +20,7 @@ namespace local
             typedef cpu::Object      Parent;
 
         public:
-        
+
             /**
              * Constructor.
              */
@@ -37,7 +39,7 @@ namespace local
             virtual bool isConstructed() const;
 
         private:
-        
+
             /**
              * Constructs this object.
              *

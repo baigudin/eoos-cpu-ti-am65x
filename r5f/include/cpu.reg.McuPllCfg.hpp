@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x MCU WKUP Domain configuration regisres.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_REG_MCU_PLL_CFG_HPP_
 #define CPU_REG_MCU_PLL_CFG_HPP_
@@ -21,21 +23,21 @@ namespace local
 
                 /**
                  * Memory address of this registers.
-                 */            
+                 */
                 static const intptr ADDRESS = 0x40D00000;
 
-                /** 
+                /**
                  * Constructor.
-                 */  
+                 */
                 McuPllCfg() :
                     pid        (),
                     pllMmrCfg0 (),
                     pllMmrCfg1 (){
                 }
 
-                /** 
+                /**
                  * Destructor.
-                 */  
+                 */
                ~McuPllCfg(){}
 
                 /**
@@ -48,7 +50,7 @@ namespace local
                 void* operator new(uint32, intptr ptr)
                 {
                     return reinterpret_cast<void*>(ptr);
-                }     
+                }
 
                 /**
                  * 0h Peripheral Identification Register.
@@ -60,7 +62,7 @@ namespace local
                    ~Pid(){}
 
                     uint32 value;
-                    struct 
+                    struct
                     {
                         uint32 yMinor : 6;
                         uint32 custom : 2;
@@ -72,7 +74,7 @@ namespace local
                     } bit;
                 } pid;
 
-            private:        
+            private:
 
                 uint32 space0_[1];
 
@@ -153,5 +155,5 @@ namespace local
             };
         }
     }
-} 
+}
 #endif // CPU_REG_MCU_PLL_CFG_HPP_

@@ -1,10 +1,12 @@
-/** 
+/**
  * TI AM65x R5F WKUP Domain Control Module registers.
  *
- * TODO: The set of the registers is not fully filled with bit-fields. 
+ * TODO: The set of the registers is not fully filled with bit-fields.
  *       It will be refreshed by the time it will have been needed.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_REG_WKUP_CTRL_MMR0_HPP_
 #define CPU_REG_WKUP_CTRL_MMR0_HPP_
@@ -35,37 +37,37 @@ namespace local
 
                 /**
                  * Kick protection registers values for partition 1.
-                 */                
+                 */
                 static const uint32 PARTITION1_KICK0 = 0x68EF3490;
                 static const uint32 PARTITION1_KICK1 = 0xD172BC5A;
-                
+
                 /**
                  * Kick protection registers values for partition 2.
-                 */                
+                 */
                 static const uint32 PARTITION2_KICK0 = 0x68EF3490;
                 static const uint32 PARTITION2_KICK1 = 0xD172BC5A;
-                
+
                 /**
                  * Kick protection registers values for partition 3.
-                 */                
+                 */
                 static const uint32 PARTITION3_KICK0 = 0x68EF3490;
                 static const uint32 PARTITION3_KICK1 = 0xD172BC5A;
-                
+
                 /**
                  * Kick protection registers values for partition 6.
-                 */                
+                 */
                 static const uint32 PARTITION6_KICK0 = 0x68EF3490;
                 static const uint32 PARTITION6_KICK1 = 0xD172BC5A;
-                
+
                 /**
                  * Kick protection registers values for partition 7.
-                 */                
+                 */
                 static const uint32 PARTITION7_KICK0 = 0x68EF3490;
                 static const uint32 PARTITION7_KICK1 = 0xD172BC5A;
 
-                /** 
+                /**
                  * Constructor.
-                 */  
+                 */
                 WkupCtrlMmr0() :
                     pid                              (),
                     mmrCfg1                          (),
@@ -154,9 +156,9 @@ namespace local
                     lock7Kick1                       (){
                 }
 
-                /** 
+                /**
                  * Destructor.
-                 */  
+                 */
                ~WkupCtrlMmr0(){}
 
                 /**
@@ -169,7 +171,7 @@ namespace local
                 void* operator new(uint32, intptr ptr)
                 {
                     return reinterpret_cast<void*>(ptr);
-                }     
+                }
 
                 /**
                  * 0h Peripheral Identification Register 4300 0000h Section 5.1.1.4.1.
@@ -179,15 +181,15 @@ namespace local
                     Pid(){}
                     Pid(uint32 v){value = v;}
                    ~Pid(){}
-                   
+
                     uint32 value;
-                    struct 
+                    struct
                     {
                         uint32 rev : 32;
                     } bit;
                 } pid;
 
-            private:        
+            private:
 
                 uint32 space0_[0x1];
 
@@ -209,13 +211,13 @@ namespace local
                         uint32               : 24;
                     } bit;
                 } mmrCfg1;
-                
-            private:        
+
+            private:
 
                 uint32 space1_[0x2];
 
-            public:                
-            
+            public:
+
                 /**
                  * 14h JTAG ID Register 4300 0014h Section 5.1.1.4.3.
                  */
@@ -227,7 +229,7 @@ namespace local
 
                     uint32 value;
                 } ctrlmmrWupJagid;
-                
+
                 /**
                  * 18h JTAG Device ID Register 4300 0018h Section 5.1.1.4.4.
                  */
@@ -239,13 +241,13 @@ namespace local
 
                     uint32 value;
                 } jtagDeviceId;
-                
-            private:        
+
+            private:
 
                 uint32 space2_[0x5];
 
             public:
-                
+
                 /**
                  * 30h WKUP Domain Device Status Register 4300 0030h Section 5.1.1.4.5.
                  */
@@ -257,7 +259,7 @@ namespace local
 
                     uint32 value;
                 } devstat;
-                
+
                 /**
                  * 34h WKUP Domain Boot Configuration Register 4300 0034h Section 5.1.1.4.6.
                  */
@@ -270,12 +272,12 @@ namespace local
                     uint32 value;
                 } bootcfg;
 
-            private:        
+            private:
 
                 uint32 space3_[0x3];
 
-            public:                
-                
+            public:
+
                 /**
                  * 44h ROM Boot Progress Register 4300 0044h Section 5.1.1.4.7.
                  */
@@ -287,13 +289,13 @@ namespace local
 
                     uint32 value;
                 } bootProgress;
-                
-            private:        
+
+            private:
 
                 uint32 space4_[0x6];
 
-            public:                
-                
+            public:
+
                 /**
                  * 60h Device Feature Register 0 4300 0060h Section 5.1.1.4.8.
                  */
@@ -306,12 +308,12 @@ namespace local
                     uint32 value;
                 } deviceFeature0;
 
-            private:        
+            private:
 
                 uint32 space5_[0x1];
 
-            public:    
-                
+            public:
+
                 /**
                  * 68h Device Feature Register 2 4300 0068h Section 5.1.1.4.9.
                  */
@@ -323,7 +325,7 @@ namespace local
 
                     uint32 value;
                 } deviceFeature2;
-                
+
                 /**
                  * 6Ch Device Feature Register 3 4300 006Ch Section 5.1.1.4.10.
                  */
@@ -336,12 +338,12 @@ namespace local
                     uint32 value;
                 } deviceFeature3;
 
-            private:        
+            private:
 
                 uint32 space6_[0x3E6];
 
-            public:    
-                
+            public:
+
                 /**
                  * 1008h Partition 0 Lock Key 0 Register 4300 1008h Section 5.1.1.4.11.
                  */
@@ -358,7 +360,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock0Kick0;
-                
+
                 /**
                  * 100Ch Partition 0 Lock Key 1 Register 4300 100Ch Section 5.1.1.4.12.
                  */
@@ -374,7 +376,7 @@ namespace local
                         uint32 key : 32;
                     } bit;
                 } lock0Kick1;
-                
+
                 /**
                  * 1010h Interrupt Raw Status Register 4300 1010h Section 5.1.1.4.13.
                  */
@@ -386,7 +388,7 @@ namespace local
 
                     uint32 value;
                 } intrRawStat;
-                
+
                 /**
                  * 1014h Interrupt Status and Clear Register 4300 1014h Section 5.1.1.4.14.
                  */
@@ -398,7 +400,7 @@ namespace local
 
                     uint32 value;
                 } intrStatClr;
-                
+
                 /**
                  * 1018h Interrupt Enable Set Register 4300 1018h Section 5.1.1.4.15.
                  */
@@ -410,7 +412,7 @@ namespace local
 
                     uint32 value;
                 } intrEnSet;
-                
+
                 /**
                  * 101Ch Interrupt Enable Clear Register 4300 101Ch Section 5.1.1.4.16.
                  */
@@ -423,12 +425,12 @@ namespace local
                     uint32 value;
                 } intrEnClr;
 
-            private:        
+            private:
 
                 uint32 space7_[0x1];
 
-            public:    
-                
+            public:
+
                 /**
                  * 1024h Fault Address Register 4300 1024h Section 5.1.1.4.17.
                  */
@@ -440,7 +442,7 @@ namespace local
 
                     uint32 value;
                 } faultAddr;
-                
+
                 /**
                  * 1028h Fault Type Register 4300 1028h Section 5.1.1.4.18.
                  */
@@ -452,7 +454,7 @@ namespace local
 
                     uint32 value;
                 } faultType;
-                
+
                 /**
                  * 102Ch Fault Attribute Register 4300 102Ch Section 5.1.1.4.19.
                  */
@@ -464,7 +466,7 @@ namespace local
 
                     uint32 value;
                 } faultAttr;
-                
+
                 /**
                  * 1030h Fault Clear Register 4300 1030h Section 5.1.1.4.20.
                  */
@@ -477,12 +479,12 @@ namespace local
                     uint32 value;
                 } faultClr;
 
-            private:        
+            private:
 
                 uint32 space8_[0xBF4];
 
-            public:    
-                
+            public:
+
                 /**
                  * 4004h MAIN Voltage Domain Power Control Register 4300 4004h Section 5.1.1.4.21.
                  */
@@ -495,12 +497,12 @@ namespace local
                     uint32 value;
                 } mainPwrCtrl;
 
-            private:        
+            private:
 
                 uint32 space9_[0x6];
 
-            public:    
-                
+            public:
+
                 /**
                  * 4020h WKUP GPIO Control Register 4300 4020h Section 5.1.1.4.22.
                  */
@@ -513,12 +515,12 @@ namespace local
                     uint32 value;
                 } gpioCtrl;
 
-            private:        
+            private:
 
                 uint32 space10_[0x38];
 
-            public:    
-                
+            public:
+
                 /**
                  * 4104h WKUP Spare Control 1 Register 4300 4104h Section 5.1.1.4.23.
                  */
@@ -531,12 +533,12 @@ namespace local
                     uint32 value;
                 } spareCtrl1;
 
-            private:        
+            private:
 
                 uint32 space11_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 4114h WKUP Spare Control 5 Register 4300 4114h Section 5.1.1.4.24.
                  */
@@ -549,12 +551,12 @@ namespace local
                     uint32 value;
                 } spareCtrl5;
 
-            private:        
+            private:
 
                 uint32 space12_[0x3BC];
 
-            public:    
-                
+            public:
+
                 /**
                  * 5008h Partition 1 Lock Key 0 Register 4300 5008h Section 5.1.1.4.25.
                  */
@@ -571,7 +573,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock1Kick0;
-                
+
                 /**
                  * 500Ch Partition 1 Lock Key 1 Register 4300 500Ch Section 5.1.1.4.26.
                  */
@@ -588,12 +590,12 @@ namespace local
                     } bit;
                 } lock1Kick1;
 
-            private:        
+            private:
 
                 uint32 space13_[0xBFC];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8000h Observe Clock Output Control Register 4300 8000h Section 5.1.1.4.27.
                  */
@@ -606,12 +608,12 @@ namespace local
                     uint32 value;
                 } McuObsclkCtrl;
 
-            private:        
+            private:
 
                 uint32 space14_[0x4];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8014h Oscillator1 Control Register 4300 8014h Section 5.1.1.4.28.
                  */
@@ -624,12 +626,12 @@ namespace local
                     uint32 value;
                 } hfosc1Ctrl;
 
-            private:        
+            private:
 
                 uint32 space15_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8024h 12.5 MHz RC Oscillator Trim Register 4300 8024h Section 5.1.1.4.29.
                  */
@@ -642,12 +644,12 @@ namespace local
                     uint32 value;
                 } rc12mOscTrim;
 
-            private:        
+            private:
 
                 uint32 space16_[0x2];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8030h Low Frequency Oscillator Control Register 4300 8030h Section 5.1.1.4.30.
                  */
@@ -661,12 +663,12 @@ namespace local
                 } lfoscCtrl;
 
 
-            private:        
+            private:
 
                 uint32 space17_[0x7];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8050h MCU PLL Source Clock Select Register 4300 8050h Section 5.1.1.4.31.
                  */
@@ -685,12 +687,12 @@ namespace local
                     } bit;
                 } mcuPllClksel;
 
-            private:        
+            private:
 
                 uint32 space18_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8060h WKUP Peripheral Clock Select Register 4300 8060h Section 5.1.1.4.32.
                  */
@@ -702,7 +704,7 @@ namespace local
 
                     uint32 value;
                 } perClksel;
-                
+
                 /**
                  * 8064h WKUP USART0 Clock Select Register 4300 8064h Section 5.1.1.4.33.
                  */
@@ -715,12 +717,12 @@ namespace local
                     uint32 value;
                 } usartClksel;
 
-            private:        
+            private:
 
                 uint32 space19_[0x2];
 
-            public:    
-                
+            public:
+
                 /**
                  * 8070h WKUP GPIO Clock Select Register 4300 8070h Section 5.1.1.4.34.
                  */
@@ -733,11 +735,11 @@ namespace local
                     uint32 value;
                 } gpioClksel;
 
-            private:        
+            private:
 
                 uint32 space20_[0x3];
 
-            public:    
+            public:
 
                 /**
                  * 8080h - 809Ch MAIN PLL0 - PLL4, and PLL6, PLL7 Source Clock Select Registers Section 5.1.1.4.35 - 41
@@ -753,12 +755,12 @@ namespace local
                     uint32 value;
                 } mainPllClksel[8];
 
-            private:        
+            private:
 
                 uint32 space21_[0x8];
 
-            public:    
-                
+            public:
+
                 /**
                  * 80C0h MAIN System Clock Control Register 4300 80C0h Section 5.1.1.4.42.
                  */
@@ -771,12 +773,12 @@ namespace local
                     uint32 value;
                 } mainSysclkCtrl;
 
-            private:        
+            private:
 
                 uint32 space22_[0x3D1];
 
-            public:    
-                
+            public:
+
                 /**
                  * 9008h Partition 2 Lock Key 0 Register 4300 9008h Section 5.1.1.4.43.
                  */
@@ -793,7 +795,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock2Kick0;
-                
+
                 /**
                  * 900Ch Partition 2 Lock Key 1 Register 4300 900Ch Section 5.1.1.4.44.
                  */
@@ -810,12 +812,12 @@ namespace local
                     } bit;
                 } lock2Kick1;
 
-            private:        
+            private:
 
                 uint32 space23_[0xCAC];
 
-            public:    
-                
+            public:
+
                 /**
                  * C2C0h WKUP Power-On Self Test Status Register 4300C2C0h Section 5.1.1.4.45.
                  */
@@ -828,12 +830,12 @@ namespace local
                     uint32 value;
                 } postStat;
 
-            private:        
+            private:
 
                 uint32 space24_[0xF];
 
-            public:    
-                
+            public:
+
                 /**
                  * C300h WKUP eFuse CRC Control Register 4300 C300h Section 5.1.1.4.46.
                  */
@@ -845,7 +847,7 @@ namespace local
 
                     uint32 value;
                 } fuseCrcCtrl;
-                
+
                 /**
                  * C304h WKUP eFuse Chain1 CRC Register 4300 C304h Section 5.1.1.4.47.
                  */
@@ -857,7 +859,7 @@ namespace local
 
                     uint32 value;
                 } chain1CrcFuse;
-                
+
                 /**
                  * C308h WKUP eFuse Chain2 CRC Register 4300 C308h Section 5.1.1.4.48.
                  */
@@ -869,7 +871,7 @@ namespace local
 
                     uint32 value;
                 } chain2CrcFuse;
-                
+
                 /**
                  * C30Ch WKUP eFuse Chain3 CRC Register 4300C30Ch Section 5.1.1.4.49a.
                  */
@@ -882,12 +884,12 @@ namespace local
                     uint32 value;
                 } chain3CrcFuse;
 
-            private:        
+            private:
 
                 uint32 space25_[0x4];
 
-            public:    
-                
+            public:
+
                 /**
                  * C320h WKUP eFuse CRC Status Register 4300 C320h Section 5.1.1.4.50.
                  */
@@ -899,7 +901,7 @@ namespace local
 
                     uint32 value;
                 } fuseCrcStat;
-                
+
                 /**
                  * C324h WKUP eFuse Chain1 Calc CRC Register 4300 C324h Section 5.1.1.4.51.
                  */
@@ -911,7 +913,7 @@ namespace local
 
                     uint32 value;
                 } chain1CrcCalc;
-                
+
                 /**
                  * C328h WKUP eFuse Chain2 Calc CRC Register 4300 C328h Section 5.1.1.4.52.
                  */
@@ -923,7 +925,7 @@ namespace local
 
                     uint32 value;
                 } chain2CrcCalc;
-                
+
                 /**
                  * C32Ch WKUP eFuse Chain3 Calc CRC Register 4300C32Ch Section 5.1.1.4.53.
                  */
@@ -936,12 +938,12 @@ namespace local
                     uint32 value;
                 } chain3CrcCalc;
 
-            private:        
+            private:
 
                 uint32 space26_[0x336];
 
-            public:    
-                
+            public:
+
                 /**
                  * D008h Partition 3 Lock Key 0 Register 4300 D008h Section 5.1.1.4.54.
                  */
@@ -958,7 +960,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock3Kick0;
-                
+
                 /**
                  * D00Ch Partition 3 Lock Key 1 Register 4300D00ChSection 5.1.1.4.55.
                  */
@@ -975,12 +977,12 @@ namespace local
                     } bit;
                 } lock3Kick1;
 
-            private:        
+            private:
 
                 uint32 space27_[0x2BFC];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18000h Power-On Reset Control Register 4301 8000h Section 5.1.1.4.56.
                  */
@@ -992,7 +994,7 @@ namespace local
 
                     uint32 value;
                 } porCtrl;
-                
+
                 /**
                  * 18004h Power-On Reset Status Register 4301 8004h Section 5.1.1.4.57.
                  */
@@ -1004,7 +1006,7 @@ namespace local
 
                     uint32 value;
                 } porStat;
-                
+
                 /**
                  * 18008h WKUP PRG Control Register 4301 8008h Section 5.1.1.4.58.
                  */
@@ -1016,7 +1018,7 @@ namespace local
 
                     uint32 value;
                 } prgCtrl;
-                
+
                 /**
                  * 1800Ch WKUP PRG Status Register 4301 800Ch Section 5.1.1.4.59.
                  */
@@ -1028,7 +1030,7 @@ namespace local
 
                     uint32 value;
                 } prgStat;
-                
+
                 /**
                  * 18010h PMIC Voltage Power-OK Control Register 4301 8010h Section 5.1.1.4.60.
                  */
@@ -1040,7 +1042,7 @@ namespace local
 
                     uint32 value;
                 } poksaPmicVddaCtrl;
-                
+
                 /**
                  * 18014h WKUP Core Voltage Power-OK Control Register 4301 8014h Section 5.1.1.4.61.
                  */
@@ -1052,7 +1054,7 @@ namespace local
 
                     uint32 value;
                 } ctrlmmrPok1p5v0WkupCoreVddCtrl;
-                
+
                 /**
                  * 18018h MCU Core Voltage Power-OK Control Register 4301 8018h Section 5.1.1.4.62.
                  */
@@ -1064,7 +1066,7 @@ namespace local
 
                     uint32 value;
                 } pok1p5v1McuCoreVddCtrl;
-                
+
                 /**
                  * 1801Ch WKUP 1.8 Volt IO Power-OK Control Register 4301 801Ch Section 5.1.1.4.63.
                  */
@@ -1076,7 +1078,7 @@ namespace local
 
                     uint32 value;
                 } ctrlmmrPok3p3v0Wkup1p8ioVddsCtrl;
-                
+
                 /**
                  * 18020h WKUP 3.3 Volt IO Power-OK Control Register 4301 8020h Section 5.1.1.4.64.
                  */
@@ -1089,12 +1091,12 @@ namespace local
                     uint32 value;
                 } ctrlmmrPok3p3v1Wkup3p3ioVddsCtrl;
 
-            private:        
+            private:
 
                 uint32 space28_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18030h WKUP LDO Control Register 4301 8030h Section 5.1.1.4.65.
                  */
@@ -1106,7 +1108,7 @@ namespace local
 
                     uint32 value;
                 } ldoCtrl;
-                
+
                 /**
                  * 18034h WKUP SRAM LDO Control Register 4301 8034h Section 5.1.1.4.66.
                  */
@@ -1119,12 +1121,12 @@ namespace local
                     uint32 value;
                 } sramLdoCtrl;
 
-            private:        
+            private:
 
                 uint32 space29_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18044h WKUP LDO Bandgap Module Trim Register 4301 8044h Section 5.1.1.4.67.
                  */
@@ -1137,12 +1139,12 @@ namespace local
                     uint32 value;
                 } bandgapTrim;
 
-            private:        
+            private:
 
                 uint32 space30_[0x6];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18060h Voltage Domain Control Register 4301 8060h Section 5.1.1.4.68.
                  */
@@ -1155,12 +1157,12 @@ namespace local
                     uint32 value;
                 } mcuVdomCtrlmcu;
 
-            private:        
+            private:
 
                 uint32 space31_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18070h MAIN Voltage Domain Control Register 4301 8070h Section 5.1.1.4.69.
                  */
@@ -1173,12 +1175,12 @@ namespace local
                     uint32 value;
                 } mainVdomCtrl;
 
-            private:        
+            private:
 
                 uint32 space32_[0xB];
 
-            public:    
-                
+            public:
+
                 /**
                  * 180A0h Temperature diode trim register 4301 80A0h Section 5.1.1.4.70.
                  */
@@ -1191,12 +1193,12 @@ namespace local
                     uint32 value;
                 } tempDiodeTrim;
 
-            private:        
+            private:
 
                 uint32 space33_[0x19];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18108h MAIN PRG Control Register 4301 8108h Section 5.1.1.4.71.
                  */
@@ -1208,7 +1210,7 @@ namespace local
 
                     uint32 value;
                 } mainPrgCtrl;
-                
+
                 /**
                  * 1810Ch MAIN PRG Status Register 4301 810Ch Section 5.1.1.4.72.
                  */
@@ -1220,7 +1222,7 @@ namespace local
 
                     uint32 value;
                 } mainPrgStat;
-                
+
                 /**
                  * 18110h MAIN Core Voltage Power-OK Control Register 4301 8110h Section 5.1.1.4.73.
                  */
@@ -1232,7 +1234,7 @@ namespace local
 
                     uint32 value;
                 } cok1p5v2MainCoreVddCtrl;
-                
+
                 /**
                  * 18114h MPU0 Voltage Power-OK Control Register 4301 8114h Section 5.1.1.4.74.
                  */
@@ -1244,7 +1246,7 @@ namespace local
 
                     uint32 value;
                 } pok1p5v3Mpu0VddCtrl;
-                
+
                 /**
                  * 18118h MPU1 Voltage Power-OK Control Register 4301 8118h Section 5.1.1.4.75.
                  */
@@ -1256,7 +1258,7 @@ namespace local
 
                     uint32 value;
                 } pok1p5v4Mpu1VddCtrl;
-                
+
                 /**
                  * 1811Ch IO Voltage Power-OK Control Register 4301 811Ch Section 5.1.1.4.76.
                  */
@@ -1268,7 +1270,7 @@ namespace local
 
                     uint32 value;
                 } pok1p5v5DdrioVddsCtrlddr;
-                
+
                 /**
                  * 18120h 1.8 Volt IO Power-OK Control Register 4301 8120h Section 5.1.1.4.77.
                  */
@@ -1280,7 +1282,7 @@ namespace local
 
                     uint32 value;
                 } pok3p3v2Main1p8ioVddsCtrlmain;
-                
+
                 /**
                  * 18124h MAIN 3.3 Volt IO Power-OK Control Register 4301 8124h Section 5.1.1.4.78.
                  */
@@ -1293,12 +1295,12 @@ namespace local
                     uint32 value;
                 } pok3p3v3Main3p3ioVddsCtrl;
 
-            private:        
+            private:
 
                 uint32 space34_[0x12];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18170h PowerOn Reset Control Register 4301 8170h Section 5.1.1.4.79.
                  */
@@ -1310,7 +1312,7 @@ namespace local
 
                     uint32 value;
                 } porRstCtrl;
-                
+
                 /**
                  * 18174h MAIN Domain Warm Reset Control Register 4301 8174h Section 5.1.1.4.80.
                  */
@@ -1322,7 +1324,7 @@ namespace local
 
                     uint32 value;
                 } mainWarmRstCtrl;
-                
+
                 /**
                  * 18178h MAIN Domain Reset Status Register 4301 8178h Section 5.1.1.4.81.
                  */
@@ -1334,7 +1336,7 @@ namespace local
 
                     uint32 value;
                 } mainRstStat;
-                
+
                 /**
                  * 1817Ch MCU Domain Warm Reset Control Register 4301 817Ch Section 5.1.1.4.82.
                  */
@@ -1346,7 +1348,7 @@ namespace local
 
                     uint32 value;
                 } mcuWarmRstCtrl;
-                
+
                 /**
                  * 18180h MPU Cluster 0 Glitch Detect Control Register 4301 8180h Section 5.1.1.4.83.
                  */
@@ -1358,7 +1360,7 @@ namespace local
 
                     uint32 value;
                 } mpu0GldtcCtrl;
-                
+
                 /**
                  * 18184h MPU Cluster 1 Glitch Detect Control Register 4301 8184h Section 5.1.1.4.84.
                  */
@@ -1371,12 +1373,12 @@ namespace local
                     uint32 value;
                 } mpu1GldtcCtrl;
 
-            private:        
+            private:
 
                 uint32 space35_[0x2];
 
-            public:    
-                
+            public:
+
                 /**
                  * 18190h Core Glitch Detect Control Register 4301 8190h Section 5.1.1.4.85.
                  */
@@ -1389,12 +1391,12 @@ namespace local
                     uint32 value;
                 } coreGldtcCtrl;
 
-            private:        
+            private:
 
                 uint32 space36_[0x3];
 
-            public:    
-                
+            public:
+
                 /**
                  * 181A0h Cluster 0 Glitch Detect Status Register 4301 81A0h Section5.1.1.4.86.
                  */
@@ -1406,7 +1408,7 @@ namespace local
 
                     uint32 value;
                 } mpu0GldtcStatmpu;
-                
+
                 /**
                  * 181A4h MPU Cluster 1 Glitch Detect Status Register 4301 81A4h Section 5.1.1.4.87.
                  */
@@ -1419,12 +1421,12 @@ namespace local
                     uint32 value;
                 } mpu1GldtcStat;
 
-            private:        
+            private:
 
                 uint32 space37_[0x2];
 
-            public:    
-                
+            public:
+
                 /**
                  * 181B0h Core Glitch Detect Status Register 4301 81B0h Section 5.1.1.4.88.
                  */
@@ -1437,12 +1439,12 @@ namespace local
                     uint32 value;
                 } coreGldtcStat;
 
-            private:        
+            private:
 
                 uint32 space38_[0x395];
 
-            public:    
-                
+            public:
+
                 /**
                  * 19008h Partition 6 Lock Key 0 Register 4301 9008h Section 5.1.1.4.89.
                  */
@@ -1459,7 +1461,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock6Kick0;
-                
+
                 /**
                  * 1900Ch Partition 6 Lock Key 1 Register 4301 900Ch Section 5.1.1.4.90.
                  */
@@ -1476,12 +1478,12 @@ namespace local
                     } bit;
                 } lock6Kick1;
 
-            private:        
+            private:
 
                 uint32 space39_[0xBFC];
 
-            public:    
-                
+            public:
+
                 /**
                  * 1C000h - 1C114h PADCONFIG0 - PADCONFIG69 PAD Configuration Registers Section 5.1.1.4.91 - 160.
                  */
@@ -1494,12 +1496,12 @@ namespace local
                     uint32 value;
                 } padconfig[70];
 
-            private:        
+            private:
 
                 uint32 space40_[0x3BC];
 
-            public:    
-                
+            public:
+
                 /**
                  * 1D008h Partition 7 Lock Key 0 Register 4301 D008h Section 5.1.1.4.161.
                  */
@@ -1516,7 +1518,7 @@ namespace local
                         uint32 key      : 31;
                     } bit;
                 } lock7Kick0;
-                
+
                 /**
                  * 1D00Ch Partition 7 Lock Key 1 Register    4301 D00Ch Section 5.1.1.4.162        .
                  */
@@ -1701,5 +1703,5 @@ namespace local
             };
         }
     }
-} 
+}
 #endif // CPU_REG_WKUP_CTRL_MMR0_HPP_

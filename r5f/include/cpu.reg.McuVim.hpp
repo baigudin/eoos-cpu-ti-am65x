@@ -1,7 +1,9 @@
-/** 
+/**
  * TI AM65x R5F Vectored Interrupt Manager.
  *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #ifndef CPU_REG_MCU_VIM_HPP_
 #define CPU_REG_MCU_VIM_HPP_
@@ -29,9 +31,9 @@ namespace local
                  */
                 static const intptr ADDRESS1 = 0x40F80000;
 
-                /** 
+                /**
                  * Constructor.
-                 */  
+                 */
                 McuVim() :
                     pid     (),
                     info    (),
@@ -46,9 +48,9 @@ namespace local
                     dedvec  (){
                 }
 
-                /** 
+                /**
                  * Destructor.
-                 */  
+                 */
                ~McuVim(){}
 
                 /**
@@ -61,7 +63,7 @@ namespace local
                 void* operator new(uint32, intptr ptr)
                 {
                     return reinterpret_cast<void*>(ptr);
-                }     
+                }
 
                 /**
                  * Revision Register.
@@ -491,5 +493,5 @@ namespace local
             };
         }
     }
-} 
+}
 #endif // CPU_REG_MCU_VIM_HPP_

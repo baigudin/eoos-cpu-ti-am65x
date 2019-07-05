@@ -1,7 +1,9 @@
-/** 
+/**
  * The operating system target CPU class.
- * 
+ *
  * @author    Sergey Baigudin, sergey@baigudin.software
+ * @copyright 2019, Embedded Team, Sergey Baigudin
+ * @license   http://embedded.team/license/
  */
 #include "cpu.Cpu.hpp"
 
@@ -9,11 +11,11 @@ namespace local
 {
     namespace cpu
     {
-        /** 
+        /**
          * Constructor.
          *
          * @param config a operating system configuration.
-         */    
+         */
         Cpu::Cpu(const Configuration& config) : Parent(),
             coreId_ ( Self::readCoreId() ),
             config_ ( config ),
@@ -23,34 +25,34 @@ namespace local
             bool const isConstructed = construct();
             setConstructed( isConstructed );
         }
-        
-        /** 
+
+        /**
          * Destructor.
          */
         Cpu::~Cpu()
         {
         }
-        
+
         /**
          * Tests if this object has been constructed.
          *
          * @return true if object has been constructed successfully.
-         */    
+         */
         bool Cpu::isConstructed() const
         {
             return Parent::isConstructed();
         }
-        
+
         /**
-         * Returns a name of a target Central Processing Unit. 
+         * Returns a name of a target Central Processing Unit.
          *
          * @return a CPU name, or NULL if an error has been occurred.
-         */      
+         */
         const char* Cpu::getName() const
         {
             return "TI AM65x R5F MCU";
         }
-        
+
         /**
          * Returns an ID of CPU core executing this program code.
          *
@@ -124,8 +126,8 @@ namespace local
         /**
          * Constructs this object.
          *
-         * @return true if object has been constructed successfully.     
-         */    
+         * @return true if object has been constructed successfully.
+         */
         bool Cpu::construct()
         {
             bool res = Self::isConstructed();
